@@ -27,8 +27,22 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         hellobutton = new javax.swing.JButton();
+        MenuBar = new javax.swing.JMenuBar();
+        verEquiposButton = new javax.swing.JMenu();
+        verPartesButton = new javax.swing.JMenu();
+        verSucursalesButton = new javax.swing.JMenu();
+        verLocalidadesButton = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        altaEquiposButton = new javax.swing.JMenuItem();
+        altaPartesButton = new javax.swing.JMenuItem();
+        altaLocalidadesButton = new javax.swing.JMenuItem();
+        altaSucursalesButton = new javax.swing.JMenuItem();
+        altaPuestosButton = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("NCR stock manager");
+        setName("NCR stock manager"); // NOI18N
 
         hellobutton.setText("Hello World");
         hellobutton.addActionListener(new java.awt.event.ActionListener() {
@@ -37,38 +51,141 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        verEquiposButton.setText("Equipos");
+        MenuBar.add(verEquiposButton);
+
+        verPartesButton.setText("Partes");
+        MenuBar.add(verPartesButton);
+
+        verSucursalesButton.setText("Sucursales");
+        MenuBar.add(verSucursalesButton);
+
+        verLocalidadesButton.setText("Localidades");
+        MenuBar.add(verLocalidadesButton);
+
+        jMenu5.setText("Dar de alta");
+
+        altaEquiposButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaEquiposButton.setText("Equipos");
+        altaEquiposButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaEquiposButtonActionPerformed(evt);
+            }
+        });
+        jMenu5.add(altaEquiposButton);
+
+        altaPartesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaPartesButton.setText("Partes");
+        altaPartesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaPartesButtonActionPerformed(evt);
+            }
+        });
+        jMenu5.add(altaPartesButton);
+
+        altaLocalidadesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaLocalidadesButton.setText("Localidades");
+        altaLocalidadesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaLocalidadesButtonActionPerformed(evt);
+            }
+        });
+        jMenu5.add(altaLocalidadesButton);
+
+        altaSucursalesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaSucursalesButton.setText("Sucursales");
+        altaSucursalesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaSucursalesButtonActionPerformed(evt);
+            }
+        });
+        jMenu5.add(altaSucursalesButton);
+
+        altaPuestosButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaPuestosButton.setText("Puestos");
+        altaPuestosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaPuestosButtonActionPerformed(evt);
+            }
+        });
+        jMenu5.add(altaPuestosButton);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Clientes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem1);
+
+        MenuBar.add(jMenu5);
+
+        setJMenuBar(MenuBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(469, Short.MAX_VALUE)
                 .addComponent(hellobutton)
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(413, Short.MAX_VALUE)
+                .addContainerGap(407, Short.MAX_VALUE)
                 .addComponent(hellobutton)
-                .addGap(42, 42, 42))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void hellobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hellobuttonActionPerformed
-        // TODO add your handling code here:
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
             String query = "INSERT INTO `mydatabase`.`equipo` (`descripcionEquipo`) VALUES ('TESTING ');";
             stmt.execute(query);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "El nuevo equipo ha sido agregado a la base de datos con exito");
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
         }
     }//GEN-LAST:event_hellobuttonActionPerformed
+
+    private void altaEquiposButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEquiposButtonActionPerformed
+        this.setVisible(false);
+        new altaEquipos().setVisible(true);
+    }//GEN-LAST:event_altaEquiposButtonActionPerformed
+
+    private void altaSucursalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaSucursalesButtonActionPerformed
+        this.setVisible(false);
+        new altaSucursales().setVisible(true);
+    }//GEN-LAST:event_altaSucursalesButtonActionPerformed
+
+    private void altaLocalidadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaLocalidadesButtonActionPerformed
+        this.setVisible(false);
+        new altaLocalidades().setVisible(true);
+    }//GEN-LAST:event_altaLocalidadesButtonActionPerformed
+
+    private void altaPuestosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPuestosButtonActionPerformed
+        this.setVisible(false);
+        new altaPuestos().setVisible(true);
+    }//GEN-LAST:event_altaPuestosButtonActionPerformed
+
+    private void altaPartesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPartesButtonActionPerformed
+        this.setVisible(false);
+        new altaPartes().setVisible(true);
+    }//GEN-LAST:event_altaPartesButtonActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.setVisible(false);
+        new altaClientes().setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +222,19 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JMenuItem altaEquiposButton;
+    private javax.swing.JMenuItem altaLocalidadesButton;
+    private javax.swing.JMenuItem altaPartesButton;
+    private javax.swing.JMenuItem altaPuestosButton;
+    private javax.swing.JMenuItem altaSucursalesButton;
     private javax.swing.JButton hellobutton;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu verEquiposButton;
+    private javax.swing.JMenu verLocalidadesButton;
+    private javax.swing.JMenu verPartesButton;
+    private javax.swing.JMenu verSucursalesButton;
     // End of variables declaration//GEN-END:variables
 
 }
