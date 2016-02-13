@@ -21,13 +21,15 @@ public class altaSucursales extends javax.swing.JFrame {
             ResultSet queryset = stmt.executeQuery(query);
             while (queryset.next()) {
                 String nombre = queryset.getString("nombreCliente");
-                clienteCombo.addItem(nombre);
+                Integer index = queryset.getInt("idempresasClientes"); 
+                clienteCombo.addItem(index+"-"+nombre);
             }
             query = "SELECT * FROM mydatabase.localidad;";
             queryset = stmt.executeQuery(query);
             while (queryset.next()) {
                 String nombre = queryset.getString("nombreLocalidad");
-                localCombo.addItem(nombre);
+                Integer index  = queryset.getInt("idlocalidad");
+                localCombo.addItem(index+"-"+nombre);
             }
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
@@ -127,12 +129,15 @@ public class altaSucursales extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void altaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaButtonActionPerformed
-        System.out.println(localCombo.getSelectedItem().toString());
+        String selectedLocation = localCombo.getSelectedItem().toString();
+        char indexLocation = selectedLocation.charAt(0);
+        String  selectedClient = clienteCombo.getSelectedItem().toString();
+        char indexClient = selectedClient.charAt(0);
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`sucursal` (`nombreSucursal`, `localidadSucursal`, `clienteSucursal`) VALUES ('"+ nameText.getText() +"', '"+ localCombo.getSelectedItem().toString()+"', '"+clienteCombo.getSelectedItem().toString()+"');";
+            String query = "INSERT INTO `mydatabase`.`sucursal` (`nombreSucursal`, `localidadSucursal`, `clienteSucursal`) VALUES ('"+ nameText.getText() +"', '"+ indexLocation+"', '"+indexClient+"');";
             stmt.execute(query);
             JOptionPane.showMessageDialog(this, "El nuevo equipo ha sido agregado a la base de datos con exito");
         } catch (SQLException | ClassNotFoundException ex) {

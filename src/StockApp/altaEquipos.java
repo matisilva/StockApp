@@ -25,7 +25,6 @@ public class altaEquipos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         altaButton = new javax.swing.JButton();
         descriptionText = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         altaVigenciaCheck = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
 
@@ -41,8 +40,6 @@ public class altaEquipos extends javax.swing.JFrame {
                 altaButtonActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Imagen(opcional):");
 
         altaVigenciaCheck.setSelected(true);
         altaVigenciaCheck.setText("Vigente");
@@ -65,9 +62,7 @@ public class altaEquipos extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -91,9 +86,7 @@ public class altaEquipos extends javax.swing.JFrame {
                     .addComponent(descriptionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(altaVigenciaCheck)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3)
-                .addGap(33, 33, 33)
+                .addGap(79, 79, 79)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -129,7 +122,6 @@ public class altaEquipos extends javax.swing.JFrame {
     private javax.swing.JCheckBox altaVigenciaCheck;
     private javax.swing.JTextField descriptionText;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 

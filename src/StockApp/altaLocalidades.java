@@ -26,7 +26,6 @@ public class altaLocalidades extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         altaButton = new javax.swing.JButton();
         locText = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -45,8 +44,6 @@ public class altaLocalidades extends javax.swing.JFrame {
                 altaButtonActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Imagen(opcional):");
 
         title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         title.setText("Formulario de nueva Localidad");
@@ -78,9 +75,7 @@ public class altaLocalidades extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(title)
-                            .addComponent(jLabel3))
+                        .addComponent(title)
                         .addGap(0, 220, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,9 +106,7 @@ public class altaLocalidades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(paisText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(33, 33, 33)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
@@ -126,7 +119,7 @@ public class altaLocalidades extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`localidad` (`nombreLocalidad`, `provincia`, `pais`) VALUES ('"+ locText.getText() +"', '"+ locText.getText() +"', '"+ paisText.getText() +"');";
+            String query = "INSERT INTO `mydatabase`.`localidad` (`nombreLocalidad`, `provincia`, `pais`) VALUES ('"+ locText.getText() +"', '"+ provText.getText() +"', '"+ paisText.getText() +"');";
             stmt.execute(query);
             JOptionPane.showMessageDialog(this, "La nueva localidad ha sido agregado a la base de datos con exito");
         } catch (SQLException | ClassNotFoundException ex) {
@@ -143,7 +136,6 @@ public class altaLocalidades extends javax.swing.JFrame {
     private javax.swing.JButton altaButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField locText;
     private javax.swing.JTextField paisText;

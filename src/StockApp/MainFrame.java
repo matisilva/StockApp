@@ -26,7 +26,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        hellobutton = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         clientes = new javax.swing.JMenuItem();
@@ -46,13 +45,6 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NCR stock manager");
         setName("NCR stock manager"); // NOI18N
-
-        hellobutton.setText("Hello World");
-        hellobutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hellobuttonActionPerformed(evt);
-            }
-        });
 
         jMenu1.setText("Stock");
 
@@ -151,35 +143,15 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(469, Short.MAX_VALUE)
-                .addComponent(hellobutton)
-                .addGap(29, 29, 29))
+            .addGap(0, 585, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(407, Short.MAX_VALUE)
-                .addComponent(hellobutton)
-                .addGap(27, 27, 27))
+            .addGap(0, 457, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void hellobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hellobuttonActionPerformed
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
-            Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`equipo` (`descripcionEquipo`) VALUES ('TESTING ');";
-            stmt.execute(query);
-            JOptionPane.showMessageDialog(this, "El nuevo equipo ha sido agregado a la base de datos con exito");
-        } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
-        }
-    }//GEN-LAST:event_hellobuttonActionPerformed
 
     private void altaEquiposButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEquiposButtonActionPerformed
         new altaEquipos().setVisible(true);
@@ -252,7 +224,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem altaSucursalesButton;
     private javax.swing.JMenuItem clientes;
     private javax.swing.JMenuItem equipos;
-    private javax.swing.JButton hellobutton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;

@@ -15,6 +15,23 @@ public class altaPartes extends javax.swing.JFrame {
     /** Creates new form MainFrame */
     public altaPartes() {
         initComponents();
+        this.comboEquipo.setVisible(false);
+        this.equipoLabel.setVisible(false);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
+            Statement stmt = con.createStatement();
+            String query = "SELECT * FROM mydatabase.equipo;";
+            ResultSet queryset = stmt.executeQuery(query);
+            while (queryset.next()) {
+                String nombre = queryset.getString("descripcionEquipo");
+                Integer index = queryset.getInt("idequipo");
+                comboEquipo.addItem(index.toString() + "-"+nombre);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+        }
+
     }
 
     /** This method is called from within the constructor to
@@ -29,12 +46,12 @@ public class altaPartes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         altaButton = new javax.swing.JButton();
         descriptionText = new javax.swing.JTextField();
-        altaVigenciaCheck = new javax.swing.JCheckBox();
+        altaDisponibleCheck = new javax.swing.JCheckBox();
         title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         equipoLabel = new javax.swing.JLabel();
-        descriptionText1 = new javax.swing.JTextField();
-        equipoText = new javax.swing.JTextField();
+        partNumberText = new javax.swing.JTextField();
+        comboEquipo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NCR stock manager");
@@ -49,11 +66,11 @@ public class altaPartes extends javax.swing.JFrame {
             }
         });
 
-        altaVigenciaCheck.setSelected(true);
-        altaVigenciaCheck.setText("Disponible");
-        altaVigenciaCheck.addActionListener(new java.awt.event.ActionListener() {
+        altaDisponibleCheck.setSelected(true);
+        altaDisponibleCheck.setText("Disponible");
+        altaDisponibleCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaVigenciaCheckActionPerformed(evt);
+                altaDisponibleCheckActionPerformed(evt);
             }
         });
 
@@ -83,13 +100,13 @@ public class altaPartes extends javax.swing.JFrame {
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(equipoText)
                                     .addComponent(descriptionText)
-                                    .addComponent(descriptionText1, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addComponent(partNumberText, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(comboEquipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(440, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(altaVigenciaCheck)
+                            .addComponent(altaDisponibleCheck)
                             .addComponent(altaButton))))
                 .addGap(30, 30, 30))
         );
@@ -105,16 +122,13 @@ public class altaPartes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(descriptionText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(equipoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(equipoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(partNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(equipoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(altaVigenciaCheck)
+                .addComponent(altaDisponibleCheck)
                 .addGap(18, 18, 18)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -123,50 +137,49 @@ public class altaPartes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void altaVigenciaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaVigenciaCheckActionPerformed
-        if (this.altaVigenciaCheck.isSelected()){
-            this.equipoText.setVisible(false);
+    private void altaDisponibleCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDisponibleCheckActionPerformed
+        if (this.altaDisponibleCheck.isSelected()){
+            this.comboEquipo.setVisible(false);
             this.equipoLabel.setVisible(false);
         } else {
-            this.equipoText.setVisible(true);
+            this.comboEquipo.setVisible(true);
             this.equipoLabel.setVisible(true);
         }
-    }//GEN-LAST:event_altaVigenciaCheckActionPerformed
+    }//GEN-LAST:event_altaDisponibleCheckActionPerformed
 
     private void altaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaButtonActionPerformed
         String desText = descriptionText.getText();
-        String actBool = "obsolete";
-        if (altaVigenciaCheck.isSelected()){
-            actBool = "active";
-        }
-                
+        String query;
+        char indexEquipo;
+        String selectedEquipo;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`equipo` (`descripcionEquipo`,`vigencia`) VALUES ('" + desText + "','" + actBool +"');";
+            if (altaDisponibleCheck.isSelected()){
+                query = "INSERT INTO `mydatabase`.`parte` (`partNumber`, `descripcionParte`) VALUES ('"+ partNumberText.getText()+"', '"+descriptionText.getText()+"');";
+            } else {
+                selectedEquipo = comboEquipo.getSelectedItem().toString();
+                indexEquipo = selectedEquipo.charAt(0);
+                System.out.println(indexEquipo);
+                query = "INSERT INTO `mydatabase`.`parte` (`partNumber`, `descripcionParte`, `equipoInstalado`, `disponible`) VALUES ('"+ partNumberText.getText()+"', '"+descriptionText.getText()+"', '"+ indexEquipo +"', 'no');";
+            }
             stmt.execute(query);
-            JOptionPane.showMessageDialog(this, "El nuevo equipo ha sido agregado a la base de datos con exito");
+            JOptionPane.showMessageDialog(this, "El nuevo repuesto ha sido agregado a la base de datos con exito");
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
     }//GEN-LAST:event_altaButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaButton;
-    private javax.swing.JCheckBox altaVigenciaCheck;
+    private javax.swing.JCheckBox altaDisponibleCheck;
+    private javax.swing.JComboBox<String> comboEquipo;
     private javax.swing.JTextField descriptionText;
-    private javax.swing.JTextField descriptionText1;
     private javax.swing.JLabel equipoLabel;
-    private javax.swing.JTextField equipoText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField partNumberText;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 

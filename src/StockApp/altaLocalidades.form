@@ -34,10 +34,7 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="title" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="220" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -78,9 +75,7 @@
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="paisText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="altaButton" min="-2" pref="229" max="-2" attributes="0"/>
               <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
@@ -102,11 +97,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="locText">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Imagen(opcional):"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="title">
       <Properties>

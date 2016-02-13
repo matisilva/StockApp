@@ -42,17 +42,17 @@
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="equipoText" max="32767" attributes="0"/>
                                   <Component id="descriptionText" max="32767" attributes="0"/>
-                                  <Component id="descriptionText1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="partNumberText" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="comboEquipo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="440" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="altaVigenciaCheck" min="-2" max="-2" attributes="0"/>
+                          <Component id="altaDisponibleCheck" min="-2" max="-2" attributes="0"/>
                           <Component id="altaButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -74,20 +74,15 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="descriptionText1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="partNumberText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Component id="equipoLabel" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="equipoText" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="equipoLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="comboEquipo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="altaVigenciaCheck" min="-2" max="-2" attributes="0"/>
+              <Component id="altaDisponibleCheck" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="altaButton" min="-2" pref="229" max="-2" attributes="0"/>
               <EmptySpace pref="33" max="32767" attributes="0"/>
@@ -111,13 +106,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="descriptionText">
     </Component>
-    <Component class="javax.swing.JCheckBox" name="altaVigenciaCheck">
+    <Component class="javax.swing.JCheckBox" name="altaDisponibleCheck">
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Disponible"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaVigenciaCheckActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaDisponibleCheckActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="title">
@@ -138,9 +133,17 @@
         <Property name="text" type="java.lang.String" value="Equipo perteneciente: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="descriptionText1">
+    <Component class="javax.swing.JTextField" name="partNumberText">
     </Component>
-    <Component class="javax.swing.JTextField" name="equipoText">
+    <Component class="javax.swing.JComboBox" name="comboEquipo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
