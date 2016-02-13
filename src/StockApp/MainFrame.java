@@ -28,10 +28,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         hellobutton = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
-        verEquiposButton = new javax.swing.JMenu();
-        verPartesButton = new javax.swing.JMenu();
-        verSucursalesButton = new javax.swing.JMenu();
-        verLocalidadesButton = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        clientes = new javax.swing.JMenuItem();
+        equipos = new javax.swing.JMenuItem();
+        localidades = new javax.swing.JMenuItem();
+        partes = new javax.swing.JMenuItem();
+        puestos = new javax.swing.JMenuItem();
+        sucursales = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         altaEquiposButton = new javax.swing.JMenuItem();
         altaPartesButton = new javax.swing.JMenuItem();
@@ -51,17 +54,38 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        verEquiposButton.setText("Equipos");
-        MenuBar.add(verEquiposButton);
+        jMenu1.setText("Stock");
 
-        verPartesButton.setText("Partes");
-        MenuBar.add(verPartesButton);
+        clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        clientes.setText("Clientes");
+        clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(clientes);
 
-        verSucursalesButton.setText("Sucursales");
-        MenuBar.add(verSucursalesButton);
+        equipos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        equipos.setText("Equipos");
+        jMenu1.add(equipos);
 
-        verLocalidadesButton.setText("Localidades");
-        MenuBar.add(verLocalidadesButton);
+        localidades.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        localidades.setText("Localidades");
+        jMenu1.add(localidades);
+
+        partes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        partes.setText("Partes");
+        jMenu1.add(partes);
+
+        puestos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        puestos.setText("Puestos");
+        jMenu1.add(puestos);
+
+        sucursales.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        sucursales.setText("Sucursales");
+        jMenu1.add(sucursales);
+
+        MenuBar.add(jMenu1);
 
         jMenu5.setText("Dar de alta");
 
@@ -74,7 +98,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu5.add(altaEquiposButton);
 
-        altaPartesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaPartesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         altaPartesButton.setText("Partes");
         altaPartesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +125,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu5.add(altaSucursalesButton);
 
-        altaPuestosButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        altaPuestosButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         altaPuestosButton.setText("Puestos");
         altaPuestosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,34 +182,32 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_hellobuttonActionPerformed
 
     private void altaEquiposButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEquiposButtonActionPerformed
-        this.setVisible(false);
         new altaEquipos().setVisible(true);
     }//GEN-LAST:event_altaEquiposButtonActionPerformed
 
     private void altaSucursalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaSucursalesButtonActionPerformed
-        this.setVisible(false);
         new altaSucursales().setVisible(true);
     }//GEN-LAST:event_altaSucursalesButtonActionPerformed
 
     private void altaLocalidadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaLocalidadesButtonActionPerformed
-        this.setVisible(false);
         new altaLocalidades().setVisible(true);
     }//GEN-LAST:event_altaLocalidadesButtonActionPerformed
 
     private void altaPuestosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPuestosButtonActionPerformed
-        this.setVisible(false);
         new altaPuestos().setVisible(true);
     }//GEN-LAST:event_altaPuestosButtonActionPerformed
 
     private void altaPartesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPartesButtonActionPerformed
-        this.setVisible(false);
         new altaPartes().setVisible(true);
     }//GEN-LAST:event_altaPartesButtonActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        this.setVisible(false);
         new altaClientes().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,13 +250,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem altaPartesButton;
     private javax.swing.JMenuItem altaPuestosButton;
     private javax.swing.JMenuItem altaSucursalesButton;
+    private javax.swing.JMenuItem clientes;
+    private javax.swing.JMenuItem equipos;
     private javax.swing.JButton hellobutton;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenu verEquiposButton;
-    private javax.swing.JMenu verLocalidadesButton;
-    private javax.swing.JMenu verPartesButton;
-    private javax.swing.JMenu verSucursalesButton;
+    private javax.swing.JMenuItem localidades;
+    private javax.swing.JMenuItem partes;
+    private javax.swing.JMenuItem puestos;
+    private javax.swing.JMenuItem sucursales;
     // End of variables declaration//GEN-END:variables
 
 }

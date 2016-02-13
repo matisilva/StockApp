@@ -2,9 +2,6 @@ package StockApp;
 
 import javax.swing.*;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  *
@@ -30,24 +27,13 @@ public class altaLocalidades extends javax.swing.JFrame {
         altaButton = new javax.swing.JButton();
         locText = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         provText = new javax.swing.JTextField();
         paisText = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        verEquiposButton = new javax.swing.JMenu();
-        verPartesButton = new javax.swing.JMenu();
-        verSucursalesButton = new javax.swing.JMenu();
-        verLocalidadesButton = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        altaEquiposButton = new javax.swing.JMenuItem();
-        altaPartesButton = new javax.swing.JMenuItem();
-        altaLocalidadesButton = new javax.swing.JMenuItem();
-        altaSucursalesButton = new javax.swing.JMenuItem();
-        altaPuestosButton = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NCR stock manager");
         setName("NCR stock manager"); // NOI18N
 
@@ -62,8 +48,8 @@ public class altaLocalidades extends javax.swing.JFrame {
 
         jLabel3.setText("Imagen(opcional):");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Formulario de nueva Localidad");
+        title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        title.setText("Formulario de nueva Localidad");
 
         jLabel2.setText("Provincia:");
 
@@ -80,54 +66,6 @@ public class altaLocalidades extends javax.swing.JFrame {
             }
         });
 
-        verEquiposButton.setText("Equipos");
-        jMenuBar1.add(verEquiposButton);
-
-        verPartesButton.setText("Partes");
-        jMenuBar1.add(verPartesButton);
-
-        verSucursalesButton.setText("Sucursales");
-        jMenuBar1.add(verSucursalesButton);
-
-        verLocalidadesButton.setText("Localidades");
-        jMenuBar1.add(verLocalidadesButton);
-
-        jMenu5.setText("Dar de alta");
-
-        altaEquiposButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaEquiposButton.setText("Equipos");
-        altaEquiposButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaEquiposButtonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(altaEquiposButton);
-
-        altaPartesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaPartesButton.setText("Partes");
-        jMenu5.add(altaPartesButton);
-
-        altaLocalidadesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaLocalidadesButton.setText("Localidades");
-        jMenu5.add(altaLocalidadesButton);
-
-        altaSucursalesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaSucursalesButton.setText("Sucursales");
-        altaSucursalesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaSucursalesButtonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(altaSucursalesButton);
-
-        altaPuestosButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaPuestosButton.setText("Puestos");
-        jMenu5.add(altaPuestosButton);
-
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,7 +79,7 @@ public class altaLocalidades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addComponent(title)
                             .addComponent(jLabel3))
                         .addGap(0, 220, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -160,7 +98,7 @@ public class altaLocalidades extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4)
+                .addComponent(title)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -177,20 +115,11 @@ public class altaLocalidades extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void altaEquiposButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEquiposButtonActionPerformed
-        this.setVisible(false);
-        new altaLocalidades().setVisible(true);
-    }//GEN-LAST:event_altaEquiposButtonActionPerformed
-
-    private void altaSucursalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaSucursalesButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_altaSucursalesButtonActionPerformed
 
     private void altaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaButtonActionPerformed
         try {
@@ -209,33 +138,17 @@ public class altaLocalidades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_paisTextActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaButton;
-    private javax.swing.JMenuItem altaEquiposButton;
-    private javax.swing.JMenuItem altaLocalidadesButton;
-    private javax.swing.JMenuItem altaPartesButton;
-    private javax.swing.JMenuItem altaPuestosButton;
-    private javax.swing.JMenuItem altaSucursalesButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField locText;
     private javax.swing.JTextField paisText;
     private javax.swing.JTextField provText;
-    private javax.swing.JMenu verEquiposButton;
-    private javax.swing.JMenu verLocalidadesButton;
-    private javax.swing.JMenu verPartesButton;
-    private javax.swing.JMenu verSucursalesButton;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 
 }

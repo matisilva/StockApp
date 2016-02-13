@@ -28,19 +28,8 @@ public class altaEquipos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         altaVigenciaCheck = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        verEquiposButton = new javax.swing.JMenu();
-        verPartesButton = new javax.swing.JMenu();
-        verSucursalesButton = new javax.swing.JMenu();
-        verLocalidadesButton = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        altaEquiposButton = new javax.swing.JMenuItem();
-        altaPartesButton = new javax.swing.JMenuItem();
-        altaLocalidadesButton = new javax.swing.JMenuItem();
-        altaSucursalesButton = new javax.swing.JMenuItem();
-        altaPuestosButton = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NCR stock manager");
         setName("NCR stock manager"); // NOI18N
 
@@ -66,79 +55,30 @@ public class altaEquipos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Formulario de nuevo Equipo");
 
-        verEquiposButton.setText("Equipos");
-        jMenuBar1.add(verEquiposButton);
-
-        verPartesButton.setText("Partes");
-        jMenuBar1.add(verPartesButton);
-
-        verSucursalesButton.setText("Sucursales");
-        jMenuBar1.add(verSucursalesButton);
-
-        verLocalidadesButton.setText("Localidades");
-        jMenuBar1.add(verLocalidadesButton);
-
-        jMenu5.setText("Dar de alta");
-
-        altaEquiposButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaEquiposButton.setText("Equipos");
-        altaEquiposButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaEquiposButtonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(altaEquiposButton);
-
-        altaPartesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaPartesButton.setText("Partes");
-        jMenu5.add(altaPartesButton);
-
-        altaLocalidadesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaLocalidadesButton.setText("Localidades");
-        jMenu5.add(altaLocalidadesButton);
-
-        altaSucursalesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaSucursalesButton.setText("Sucursales");
-        altaSucursalesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaSucursalesButtonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(altaSucursalesButton);
-
-        altaPuestosButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaPuestosButton.setText("Puestos");
-        jMenu5.add(altaPuestosButton);
-
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(altaButton)
-                .addGap(23, 23, 23))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(descriptionText)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(altaVigenciaCheck))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(descriptionText))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(0, 248, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(altaVigenciaCheck)
+                            .addComponent(altaButton))))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,20 +95,11 @@ public class altaEquipos extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(33, 33, 33)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void altaEquiposButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEquiposButtonActionPerformed
-        this.setVisible(false);
-        new altaEquipos().setVisible(true);
-    }//GEN-LAST:event_altaEquiposButtonActionPerformed
-
-    private void altaSucursalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaSucursalesButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_altaSucursalesButtonActionPerformed
 
     private void altaVigenciaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaVigenciaCheckActionPerformed
         // TODO add your handling code here:
@@ -193,30 +124,13 @@ public class altaEquipos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_altaButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaButton;
-    private javax.swing.JMenuItem altaEquiposButton;
-    private javax.swing.JMenuItem altaLocalidadesButton;
-    private javax.swing.JMenuItem altaPartesButton;
-    private javax.swing.JMenuItem altaPuestosButton;
-    private javax.swing.JMenuItem altaSucursalesButton;
     private javax.swing.JCheckBox altaVigenciaCheck;
     private javax.swing.JTextField descriptionText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu verEquiposButton;
-    private javax.swing.JMenu verLocalidadesButton;
-    private javax.swing.JMenu verPartesButton;
-    private javax.swing.JMenu verSucursalesButton;
     // End of variables declaration//GEN-END:variables
 
 }

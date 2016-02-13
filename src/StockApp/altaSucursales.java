@@ -49,24 +49,13 @@ public class altaSucursales extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         altaButton = new javax.swing.JButton();
         nameText = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         clienteCombo = new javax.swing.JComboBox<>();
         localCombo = new javax.swing.JComboBox<>();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        verEquiposButton = new javax.swing.JMenu();
-        verPartesButton = new javax.swing.JMenu();
-        verSucursalesButton = new javax.swing.JMenu();
-        verLocalidadesButton = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        altaEquiposButton = new javax.swing.JMenuItem();
-        altaPartesButton = new javax.swing.JMenuItem();
-        altaLocalidadesButton = new javax.swing.JMenuItem();
-        altaSucursalesButton = new javax.swing.JMenuItem();
-        altaPuestosButton = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NCR stock manager");
         setName("NCR stock manager"); // NOI18N
 
@@ -79,60 +68,12 @@ public class altaSucursales extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Formulario de nueva Sucursal");
+        title.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        title.setText("Formulario de nueva Sucursal");
 
         jLabel2.setText("Cliente:");
 
         jLabel3.setText("Localidad:");
-
-        verEquiposButton.setText("Equipos");
-        jMenuBar1.add(verEquiposButton);
-
-        verPartesButton.setText("Partes");
-        jMenuBar1.add(verPartesButton);
-
-        verSucursalesButton.setText("Sucursales");
-        jMenuBar1.add(verSucursalesButton);
-
-        verLocalidadesButton.setText("Localidades");
-        jMenuBar1.add(verLocalidadesButton);
-
-        jMenu5.setText("Dar de alta");
-
-        altaEquiposButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaEquiposButton.setText("Equipos");
-        altaEquiposButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaEquiposButtonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(altaEquiposButton);
-
-        altaPartesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaPartesButton.setText("Partes");
-        jMenu5.add(altaPartesButton);
-
-        altaLocalidadesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaLocalidadesButton.setText("Localidades");
-        jMenu5.add(altaLocalidadesButton);
-
-        altaSucursalesButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaSucursalesButton.setText("Sucursales");
-        altaSucursalesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaSucursalesButtonActionPerformed(evt);
-            }
-        });
-        jMenu5.add(altaSucursalesButton);
-
-        altaPuestosButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        altaPuestosButton.setText("Puestos");
-        jMenu5.add(altaPuestosButton);
-
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +97,7 @@ public class altaSucursales extends javax.swing.JFrame {
                             .addComponent(clienteCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(localCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(title)
                         .addGap(0, 230, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -164,7 +105,7 @@ public class altaSucursales extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4)
+                .addComponent(title)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -179,20 +120,11 @@ public class altaSucursales extends javax.swing.JFrame {
                     .addComponent(clienteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void altaEquiposButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaEquiposButtonActionPerformed
-        this.setVisible(false);
-        new altaSucursales().setVisible(true);
-    }//GEN-LAST:event_altaEquiposButtonActionPerformed
-
-    private void altaSucursalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaSucursalesButtonActionPerformed
- 
-    }//GEN-LAST:event_altaSucursalesButtonActionPerformed
 
     private void altaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaButtonActionPerformed
         System.out.println(localCombo.getSelectedItem().toString());
@@ -217,11 +149,6 @@ public class altaSucursales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaButton;
-    private javax.swing.JMenuItem altaEquiposButton;
-    private javax.swing.JMenuItem altaLocalidadesButton;
-    private javax.swing.JMenuItem altaPartesButton;
-    private javax.swing.JMenuItem altaPuestosButton;
-    private javax.swing.JMenuItem altaSucursalesButton;
     private javax.swing.JComboBox<String> clienteCombo;
     private java.util.List<StockApp.Empresasclientes> empresasclientesList;
     private javax.persistence.Query empresasclientesQuery;
@@ -229,15 +156,9 @@ public class altaSucursales extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JComboBox<String> localCombo;
     private javax.swing.JTextField nameText;
-    private javax.swing.JMenu verEquiposButton;
-    private javax.swing.JMenu verLocalidadesButton;
-    private javax.swing.JMenu verPartesButton;
-    private javax.swing.JMenu verSucursalesButton;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 
 }
