@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.TableColumn;
 
 
 /**
@@ -50,6 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         clientes.setText("Clientes");
+        clientes.setEnabled(false);
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientesActionPerformed(evt);
@@ -59,22 +61,35 @@ public class MainFrame extends javax.swing.JFrame {
 
         equipos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         equipos.setText("Equipos");
+        equipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                equiposActionPerformed(evt);
+            }
+        });
         jMenu1.add(equipos);
 
         localidades.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         localidades.setText("Localidades");
+        localidades.setEnabled(false);
         jMenu1.add(localidades);
 
         partes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         partes.setText("Partes");
+        partes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partesActionPerformed(evt);
+            }
+        });
         jMenu1.add(partes);
 
         puestos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         puestos.setText("Puestos");
+        puestos.setEnabled(false);
         jMenu1.add(puestos);
 
         sucursales.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         sucursales.setText("Sucursales");
+        sucursales.setEnabled(false);
         jMenu1.add(sucursales);
 
         MenuBar.add(jMenu1);
@@ -147,7 +162,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGap(0, 462, Short.MAX_VALUE)
         );
 
         pack();
@@ -178,8 +193,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_clientesActionPerformed
+
+    private void partesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partesActionPerformed
+        new searchPart().setVisible(true);
+    }//GEN-LAST:event_partesActionPerformed
+
+    private void equiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equiposActionPerformed
+        new searchEquipos().setVisible(true);
+    }//GEN-LAST:event_equiposActionPerformed
 
     /**
      * @param args the command line arguments
