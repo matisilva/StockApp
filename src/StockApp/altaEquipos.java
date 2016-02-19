@@ -11,6 +11,19 @@ public class altaEquipos extends javax.swing.JFrame {
     /** Creates new form MainFrame */
     public altaEquipos() {
         initComponents();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
+            Statement stmt = con.createStatement();
+            String query = "SELECT idSucursal FROM mydatabase.sucursal;";
+            ResultSet queryset = stmt.executeQuery(query);
+            while (queryset.next()) {
+                String nombre = queryset.getString("idSucursal");
+                sucursalCombo.addItem(nombre);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+        }
     }
 
     /** This method is called from within the constructor to
@@ -25,14 +38,22 @@ public class altaEquipos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         altaButton = new javax.swing.JButton();
         descriptionText = new javax.swing.JTextField();
-        altaVigenciaCheck = new javax.swing.JCheckBox();
+        vigenteCheck = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        modeloText = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        serialText = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        sucursalCombo = new javax.swing.JComboBox<>();
+        nombreSucursal = new javax.swing.JLabel();
+        clienteSucursal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("NCR stock manager");
+        setTitle("NCR manager");
         setName("NCR stock manager"); // NOI18N
 
-        jLabel1.setText("Descripcion:");
+        jLabel1.setText("Descripcion(opcional):");
 
         altaButton.setText("Dar de alta");
         altaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -41,39 +62,70 @@ public class altaEquipos extends javax.swing.JFrame {
             }
         });
 
-        altaVigenciaCheck.setSelected(true);
-        altaVigenciaCheck.setText("Vigente");
-        altaVigenciaCheck.addActionListener(new java.awt.event.ActionListener() {
+        vigenteCheck.setSelected(true);
+        vigenteCheck.setText("Vigente");
+        vigenteCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                altaVigenciaCheckActionPerformed(evt);
+                vigenteCheckActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Formulario de nuevo Equipo");
 
+        jLabel2.setText("Modelo:");
+
+        jLabel3.setText("Serial(unico):");
+
+        jLabel5.setText("Sucursal:");
+
+        sucursalCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NULL" }));
+        sucursalCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sucursalComboActionPerformed(evt);
+            }
+        });
+
+        nombreSucursal.setText("nombreSucursal");
+
+        clienteSucursal.setText("clienteSucursal");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descriptionText)
+                        .addGap(18, 18, 18)
+                        .addComponent(altaButton)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 258, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(descriptionText))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(altaVigenciaCheck)
-                            .addComponent(altaButton))))
-                .addGap(23, 23, 23))
+                                .addComponent(serialText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(vigenteCheck)
+                                .addGap(23, 23, 23))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(clienteSucursal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nombreSucursal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sucursalCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(modeloText))
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,34 +134,49 @@ public class altaEquipos extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(modeloText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vigenteCheck)
+                    .addComponent(jLabel3)
+                    .addComponent(serialText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(sucursalCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nombreSucursal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(clienteSucursal)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(descriptionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(altaVigenciaCheck)
-                .addGap(79, 79, 79)
-                .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void altaVigenciaCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaVigenciaCheckActionPerformed
+    private void vigenteCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vigenteCheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_altaVigenciaCheckActionPerformed
+    }//GEN-LAST:event_vigenteCheckActionPerformed
 
     private void altaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaButtonActionPerformed
         String desText = descriptionText.getText();
         String actBool = "obsolete";
-        if (altaVigenciaCheck.isSelected()){
+        String indexSucursal = "";
+        indexSucursal = sucursalCombo.getSelectedItem().toString();
+        if (vigenteCheck.isSelected()){
             actBool = "active";
         }
-                
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`equipo` (`descripcionEquipo`,`vigencia`) VALUES ('" + desText + "','" + actBool +"');";
+            String query = "INSERT INTO `mydatabase`.`equipo` (`descripcionEquipo`,`vigencia`,`sucursal`,`serial`,`modelo`) VALUES ('" + desText + "','" + actBool +"','"+ indexSucursal +"','"+serialText.getText() +"','"+modeloText.getText()+"');";
             stmt.execute(query);
             JOptionPane.showMessageDialog(this, "El nuevo equipo ha sido agregado a la base de datos con exito");
         } catch (SQLException | ClassNotFoundException ex) {
@@ -117,12 +184,45 @@ public class altaEquipos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_altaButtonActionPerformed
 
+    private void sucursalComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sucursalComboActionPerformed
+        if (!sucursalCombo.getSelectedItem().toString().equals("NULL")){
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
+                Statement stmt = con.createStatement();
+                String query;
+                query = "SELECT * FROM mydatabase.sucursal WHERE `idSucursal`= '"+sucursalCombo.getSelectedItem().toString()+"';";
+                ResultSet queryset = stmt.executeQuery(query);
+                while(queryset.next()){
+                    clienteSucursal.setVisible(true);
+                    nombreSucursal.setVisible(true);
+                    nombreSucursal.setText(queryset.getString("nombreSucursal"));
+                    clienteSucursal.setText(queryset.getString("clienteSucursal"));
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex.toString());
+            }
+        } else { 
+            nombreSucursal.setVisible(false);
+            clienteSucursal.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_sucursalComboActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaButton;
-    private javax.swing.JCheckBox altaVigenciaCheck;
+    private javax.swing.JLabel clienteSucursal;
     private javax.swing.JTextField descriptionText;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField modeloText;
+    private javax.swing.JLabel nombreSucursal;
+    private javax.swing.JTextField serialText;
+    private javax.swing.JComboBox<String> sucursalCombo;
+    private javax.swing.JCheckBox vigenteCheck;
     // End of variables declaration//GEN-END:variables
 
 }

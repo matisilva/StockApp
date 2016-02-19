@@ -21,15 +21,14 @@ public class altaSucursales extends javax.swing.JFrame {
             ResultSet queryset = stmt.executeQuery(query);
             while (queryset.next()) {
                 String nombre = queryset.getString("nombreCliente");
-                Integer index = queryset.getInt("idempresasClientes"); 
-                clienteCombo.addItem(index+"-"+nombre);
+
+                clienteCombo.addItem(nombre);
             }
             query = "SELECT * FROM mydatabase.localidad;";
             queryset = stmt.executeQuery(query);
             while (queryset.next()) {
                 String nombre = queryset.getString("nombreLocalidad");
-                Integer index  = queryset.getInt("idlocalidad");
-                localCombo.addItem(index+"-"+nombre);
+                localCombo.addItem(nombre);
             }
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
@@ -50,15 +49,17 @@ public class altaSucursales extends javax.swing.JFrame {
         empresasclientesList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : empresasclientesQuery.getResultList();
         jLabel1 = new javax.swing.JLabel();
         altaButton = new javax.swing.JButton();
-        nameText = new javax.swing.JTextField();
+        idText = new javax.swing.JTextField();
         title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         clienteCombo = new javax.swing.JComboBox<>();
         localCombo = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        nameText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("NCR stock manager");
+        setTitle("NCR manager");
         setName("NCR stock manager"); // NOI18N
 
         jLabel1.setText("Nombre:");
@@ -77,6 +78,8 @@ public class altaSucursales extends javax.swing.JFrame {
 
         jLabel3.setText("Localidad:");
 
+        jLabel4.setText("ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,18 +92,20 @@ public class altaSucursales extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addGap(0, 230, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameText)
+                            .addComponent(idText)
                             .addComponent(clienteCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(localCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addGap(0, 230, Short.MAX_VALUE)))
+                            .addComponent(localCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nameText, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -108,7 +113,11 @@ public class altaSucursales extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(title)
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,9 +129,9 @@ public class altaSucursales extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(clienteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,16 +139,33 @@ public class altaSucursales extends javax.swing.JFrame {
 
     private void altaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaButtonActionPerformed
         String selectedLocation = localCombo.getSelectedItem().toString();
-        char indexLocation = selectedLocation.charAt(0);
         String  selectedClient = clienteCombo.getSelectedItem().toString();
-        char indexClient = selectedClient.charAt(0);
+        String indexLocation ="";
+        String indexClient="";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`sucursal` (`nombreSucursal`, `localidadSucursal`, `clienteSucursal`) VALUES ('"+ nameText.getText() +"', '"+ indexLocation+"', '"+indexClient+"');";
+            String query = "SELECT idLocalidad FROM mydatabase.localidad where nombreLocalidad='"+selectedLocation +"';";
+            ResultSet queryset = stmt.executeQuery(query);
+            while (queryset.next()){
+                indexLocation = queryset.getString("idLocalidad");
+            }
+            query = "SELECT idempresasClientes FROM mydatabase.empresasClientes where nombreCliente='"+selectedClient +"';";
+            queryset = stmt.executeQuery(query);
+            while (queryset.next()){
+                indexClient = queryset.getString("idempresasClientes");
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+        }
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
+            Statement stmt = con.createStatement();
+            String query = "INSERT INTO `mydatabase`.`sucursal` (`idSucursal`,`nombreSucursal`, `localidadSucursal`, `clienteSucursal`) VALUES ('"+ idText.getText() +"','"+ nameText.getText() +"', '"+ indexLocation+"', '"+indexClient+"');";
             stmt.execute(query);
-            JOptionPane.showMessageDialog(this, "El nuevo equipo ha sido agregado a la base de datos con exito");
+            JOptionPane.showMessageDialog(this, "La nueva sucursal "+nameText.getText()+" ha sido agregado a la base de datos con exito");
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
@@ -151,9 +177,11 @@ public class altaSucursales extends javax.swing.JFrame {
     private java.util.List<StockApp.Empresasclientes> empresasclientesList;
     private javax.persistence.Query empresasclientesQuery;
     private javax.persistence.EntityManager entityManager;
+    private javax.swing.JTextField idText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<String> localCombo;
     private javax.swing.JTextField nameText;
     private javax.swing.JLabel title;

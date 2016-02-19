@@ -29,11 +29,14 @@ public class altaLocalidades extends javax.swing.JFrame {
         title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        provText = new javax.swing.JTextField();
         paisText = new javax.swing.JTextField();
+        provCombo = new javax.swing.JComboBox<>();
+        distText = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("NCR stock manager");
+        setTitle("NCR manager");
         setName("NCR stock manager"); // NOI18N
 
         jLabel1.setText("Nombre de la localidad:");
@@ -52,9 +55,6 @@ public class altaLocalidades extends javax.swing.JFrame {
 
         jLabel5.setText("Pais:");
 
-        provText.setEditable(false);
-        provText.setText("Neuquen");
-
         paisText.setEditable(false);
         paisText.setText("Argentina");
         paisText.addActionListener(new java.awt.event.ActionListener() {
@@ -63,30 +63,49 @@ public class altaLocalidades extends javax.swing.JFrame {
             }
         });
 
+        provCombo.setEditable(true);
+        provCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Neuquen", "Rio Negro", "Chubut", "Santa Cruz", "Tierra del Fuego" }));
+
+        distText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                distTextActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Distancia a Neuquen:");
+
+        jLabel7.setText("KM");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(altaButton)
-                .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addGap(0, 220, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(paisText)
-                            .addComponent(locText)
-                            .addComponent(provText))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(title)
+                                .addGap(0, 220, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(paisText)
+                                    .addComponent(locText)
+                                    .addComponent(provCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(distText, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(altaButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,14 +120,19 @@ public class altaLocalidades extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(provText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(provCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(paisText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(distText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
                 .addComponent(altaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,9 +143,9 @@ public class altaLocalidades extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "matias18");
             Statement stmt = con.createStatement();
-            String query = "INSERT INTO `mydatabase`.`localidad` (`nombreLocalidad`, `provincia`, `pais`) VALUES ('"+ locText.getText() +"', '"+ provText.getText() +"', '"+ paisText.getText() +"');";
+            String query = "INSERT INTO `mydatabase`.`localidad` (`nombreLocalidad`, `provincia`, `pais`,`distanciaNeuquen`) VALUES ('"+ locText.getText() +"', '"+ provCombo.getSelectedItem().toString()+"', '"+ paisText.getText() +"','"+distText.getText() +"');";
             stmt.execute(query);
-            JOptionPane.showMessageDialog(this, "La nueva localidad ha sido agregado a la base de datos con exito");
+            JOptionPane.showMessageDialog(this, "La nueva localidad "+ locText.getText() +" ha sido agregado a la base de datos con exito");
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.toString());
         }
@@ -131,15 +155,22 @@ public class altaLocalidades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_paisTextActionPerformed
 
+    private void distTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_distTextActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton altaButton;
+    private javax.swing.JTextField distText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField locText;
     private javax.swing.JTextField paisText;
-    private javax.swing.JTextField provText;
+    private javax.swing.JComboBox<String> provCombo;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 
